@@ -10,6 +10,7 @@ class Admin extends Eloquent implements UserInterface, RemindableInterface {
 	use UserTrait, RemindableTrait;
 	
 	protected $table = 'admin';
+	public $timestamps = false;
 
 	/**
 	 * Get the unique identifier for the user.
@@ -28,7 +29,7 @@ class Admin extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	public function getAuthPassword()
 	{
-		//return Hash::make('m4t4h4r1899');
+		// return Hash::make('m4t4h4r1899');
 		return Hash::make($this->password);
 	}
 

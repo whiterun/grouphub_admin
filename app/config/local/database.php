@@ -23,7 +23,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'grouphub',
+			'database'  => 'grouphub_admin',
 			'username'  => 'root',
 			'password'  => '',
 			'charset'   => 'utf8',

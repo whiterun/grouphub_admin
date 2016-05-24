@@ -26,7 +26,7 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local' => [ 'WHITERUN' ],
+	'local' => [ 'WHITERUN', 'DESKTOP-HKP73LN'],
 
 ));
 

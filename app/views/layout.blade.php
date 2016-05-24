@@ -29,71 +29,55 @@
 	<!-- the fixed layout is not compatible with sidebar-mini -->
 	<body class="hold-transition skin-blue fixed sidebar-mini">
 		<!-- Site wrapper -->
-		<div class="wrapper">
-		
-			<!-- Header -->
-			@include('header')
-			
-			<!-- Sidebar -->
-			@include('sidebar')
+		    <!-- Header -->
+    @include('header')
 
-		<!-- =============================================== -->
+    <!-- Sidebar -->
+    @include('sidebar')
 
-		<!-- Content Wrapper. Contains page content -->
-		<div class="content-wrapper">
-		<!-- Content Header (Page header) -->
-		<section class="content-header">
-		<h1>
-		Fixed Layout
-		<small>Blank example to the fixed layout</small>
-		</h1>
-		<ol class="breadcrumb">
-		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li><a href="#">Layout</a></li>
-		<li class="active">Fixed</li>
-		</ol>
-		</section>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                {{ $page_title or "Groubhub admin" }}
+                <small>{{ $page_description or null }}</small>
+            </h1>
+            <!-- You can dynamically generate breadcrumbs here -->
+            <ol class="breadcrumb">
+                <li><a href="{{ route('index_dashboard') }}"><i class="fa fa-dashboard"></i>dashboard</a></li>
+                <li class="active">Here</li>
+            </ol>
+        </section>
 
-		<!-- Main content -->
-		<section class="content">
-		<div class="callout callout-info">
-		<h4>Tip!</h4>
-		<p>Add the fixed class to the body tag to get this layout. The fixed layout is your best option if your sidebar is bigger than your content because it prevents extra unwanted scrolling.</p>
-		</div>
-		<!-- Default box -->
-		<div class="box">
-		<div class="box-header with-border">
-		  <h3 class="box-title">Title</h3>
-		  <div class="box-tools pull-right">
-			<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-			<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-		  </div>
-		</div>
-		<div class="box-body">
-		  Start creating your amazing application!
-		</div><!-- /.box-body -->
-		<div class="box-footer">
-		  Footer
-		</div><!-- /.box-footer-->
-		</div><!-- /.box -->
+        <!-- Main content -->
+        <section class="content">
+            <!-- Your Page Content Here -->
+            @yield('content')
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
 
-		</section><!-- /.content -->
-		</div><!-- /.content-wrapper -->
-		
-			<!-- Footer -->
-			@include('footer')
-		
-		</div><!-- ./wrapper -->
+    <!-- Footer -->
+    @include('footer')
 
-		<!-- jQuery 2.1.4 -->
-		<script src="{{ asset('assets/js/jquery/jquery-2.1.4.min.js') }}"></script>
-		<!-- Bootstrap 3.3.2 -->
-		<script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
-		<!-- SlimScroll -->
-		<script src="{{ asset('assets/js/slimScroll/jquery.slimscroll.min.js') }}"></script>
-		<!-- FastClick -->
-		<script src="{{ asset('assets/js/fastclick/fastclick.min.js') }}"></script>
-		<!-- AdminLTE App -->
-		<script src="{{ asset('assets/dist/js/app.min.js') }}"></script>
+</div><!-- ./wrapper -->
+        @section('script')
+        	<!-- jQuery 2.1.4 -->
+			<script src="{{ asset('assets/js/jquery/jquery-2.1.4.min.js') }}"></script>
+			<!-- Bootstrap 3.3.2 -->
+			<script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+			<!-- SlimScroll -->
+			<script src="{{ asset('assets/js/slimScroll/jquery.slimscroll.min.js') }}"></script>
+			<!-- FastClick -->
+			<script src="{{ asset('assets/js/fastclick/fastclick.min.js') }}"></script>
+			<!-- AdminLTE App -->
+			<script src="{{ asset('assets/dist/js/app.min.js') }}"></script>
+			<!-- FLOT CHARTS -->
+			<script type="text/javascript" src="{{ asset('assets/js/flot/jquery.flot.min.js') }}"></script>
+			<!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+	        <script src="{{ asset('assets/js/flot/jquery.flot.resize.min.js') }}" type="text/javascript"></script>
+	        <script type="text/javascript" src="{{ asset('assets/js/bootstrap-wysihtml5.min.js') }}"></script>
+	        <script type="text/javascript" src="{{ asset('assets/js/bootstrap-wysihtml5.min.css') }}"></script>
+	    @show
 	</body>
 </html>
