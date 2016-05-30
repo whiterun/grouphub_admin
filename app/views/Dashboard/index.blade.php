@@ -61,7 +61,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-md-8">
 		<div class="box">
 			<div class="box-header with-border box-primary">
 				<h3 class="box-title">
@@ -84,6 +84,39 @@
 					</div>
 					<div class="col-md-4">
 					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="box">
+			<div class="box-header with-border box-primary">
+				<h4 class="box-title">
+					Browser Usage
+				</h4>
+				<div class="box-tools pull-right">
+					<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+					<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+				</div>
+			</div>
+			<div class="box-body">
+				<div class="row">
+					<div class="col-md-8">
+		                <div class="chart-responsive">
+		                   <canvas id="pieChart" height="160" width="200" style="width: 200px; height: 160px;"></canvas>
+		                </div>
+                  		<!-- ./chart-responsive -->
+                  	</div>
+                  	<div class="col-md-4">
+	                  <ul class="chart-legend clearfix">
+	                    <li><i class="fa fa-circle-o text-red"></i> Chrome</li>
+	                    <li><i class="fa fa-circle-o text-green"></i> IE</li>
+	                    <li><i class="fa fa-circle-o text-yellow"></i> FireFox</li>
+	                    <li><i class="fa fa-circle-o text-aqua"></i> Safari</li>
+	                    <li><i class="fa fa-circle-o text-light-blue"></i> Opera</li>
+	                    <li><i class="fa fa-circle-o text-gray"></i> Navigator</li>
+	                  </ul>
+                	</div>
 				</div>
 			</div>
 		</div>

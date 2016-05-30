@@ -45,7 +45,7 @@ Route::group([ 'before' => 'auth' ], function()
 
 // user
 Route::group([ 'prefix'=> 'user' ], function()
-{
+{	
 	Route::get('/', [ 'as' => 'index_user', 'uses' => 'UserController@index' ]);
 	Route::get('/create', [ 'as' => 'create_user', 'uses' => 'UserController@create' ]);
 	Route::post('/store', [ 'as' => 'store_user', 'uses' => 'UserController@store' ]);
@@ -64,8 +64,17 @@ Route::group([ 'prefix' => 'community' ], function(){
 	 Route::post('/set-Activate/{id}', [ 'as' => 'community.set.active', 'uses' => 'CommunityController@setActivate' ]);
 	Route::get('/detail/{id}', [ 'as' => 'detail_community','uses' => 'CommunityController@detail' ]);
 	Route::get('/member/{id}', [ 'as' => 'member_community', 'uses' => 'CommunityController@Member' ]);
-	Route::post('/approve_member/{id}', [ 'as' => 'approveMember_community', 'uses' => 'CommunityController@approveMember' ]);
-	Route::delete('/remove-member/{id}', [ 'as' => 'remove_member', 'uses' => 'CommunityController@removeMember' ]);
+	Route::post('/approve_member', [ 'as' => 'admin.community.approveMember', 'uses' => 'CommunityController@approveMember' ]);
+	Route::post('/remove_member', [ 'as' => 'admin.community.removeMember', 'uses' => 'CommunityController@removeMember' ]);
+	
+	// Organizer
+	Route::get('/organizer/{id}', [ 'as' => 'admin.orginizer.community','uses' => 'CommunityController@organizer' ]);
+	Route::post('/setOrganizer', [ 'as' => 'admin.set.organizer', 'uses' => 'CommunityController@setOrganizer' ]);
+	Route::post('/removeOrganizer', [ 'as' => 'admin.remove.organizer', 'uses' => 'CommunityController@removeOrganizer' ]);
+	
+	//creator
+	Route::get('/creator/{id}', [ 'as' => 'admin.creator.community', 'uses' => 'CommunityController@creator' ] );
+	Route::post('/transfer_creator', [ 'as' => 'admin.transfer.creator', 'uses' => 'CommunityController@transferCreator' ]);
 });
 
 // event

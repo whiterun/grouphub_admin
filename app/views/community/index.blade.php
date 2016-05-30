@@ -24,13 +24,6 @@
 	</div>
 @endif
 
-@if(Session::has('inactive'))
-	<div class="alert alert-success">
-		<button type="button" class="close fa fa-close"  data-dismiss="alert"></button>
-		<i class="fa fa-check"></i> {{ Session::get('inactive') }}
-	</div>
-@endif
-
 <div class="box box-info">
   <div class="box-header with-border">
     <h3 class="box-title">
@@ -64,9 +57,11 @@
 				<td style="width:20px;">{{ $table->$db->format('M jS, Y') }}</td>
 				@elseif ( $db == 'status' )
 				@if ( $table->$db == 1 )
-				<td class="text-success" style="width:20px;">Active</td>
+				<td style="width:20px;">Active</td>
 				@elseif ( $table->$db == 2 )
-				<td class="text-error" style="width:20px;">Inactive</td>
+				<td style="width:20px;">Inactive</td>
+				@elseif ( $table->$db == 3 )
+				<td style="width:20px;">Freezed</td>
 				@endif
 				@else
 				<td style="width:20px;">{{ ($db == 'name_uri') ? url('').'/'.$table->$db : $table->$db }}</td>
@@ -80,20 +75,28 @@
    	 				<span class="sr-only">Toggle Dropdown</span>
   					</button>
 				  <ul class="dropdown-menu">
-				    <li><a href="community/detail/{{ $table->id }}"><i class="fa fa-search-plus"></i> Preview</a></li>
-				    <li><a href="community/member/{{ $table->id }}"><i class="fa fa-users"></i> Manage Member</a></li>
-				    <li><a href="#"><i class="fa fa-hand-o-right"></i> Set Organizer</a></li>
-				    <li><a href="#"><i class="fa fa-paper-plane"></i> Transfer Creator</a></li>
+				    <li>
+				    	<a href="community/detail/{{ $table->id }}"><i class="fa fa-search-plus"></i> Preview</a>
+				    </li>
+				    <li>
+				    	<a href="community/member/{{ $table->id }}"><i class="fa fa-users"></i> Manage Member</a>
+				    </li>
+				    <li>
+				    	<a href="community/organizer/{{ $table->id }}"><i class="fa fa-hand-o-right"></i> Set Organizer</a>
+				    </li>
+				    <li>
+				    	<a href="community/creator/{{ $table->id }}"><i class="fa fa-paper-plane"></i> Transfer Creator</a>
+				    </li>
 				 	
 				 	@if( $table->status == 1 )
 				 	<li>
-				 		<a class="inactive" href="community/set-inactive/{{$table->id}}"><i class="fa fa-lock"></i> Set Inactive</a>
+				 		<a class="inactive" href="community/set-inactive/{{ $table->id }}"><i class="fa fa-lock"></i> Set Inactive</a>
 				 	</li>
 				 	@endif
 				 	
 				 	@if( $table->status == 2 )
 				 	<li>
-				 		<a class="activate" href="community/set-Activate/{{$table->id}}"><i class="fa fa-unlock"></i> Set Activate</a>
+				 		<a class="activate" href="community/set-Activate/{{ $table->id }}"><i class="fa fa-unlock"></i> Set Activate</a>
 				 	</li>
 				 	@endif
 				 	<li><a href="community/edit/{{ $table->id }}"><i class="fa fa-pencil"></i> Edit</a></li>

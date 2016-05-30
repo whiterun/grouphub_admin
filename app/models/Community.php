@@ -8,8 +8,4 @@ class Community extends Eloquent {
 	
 	public $guarded = FALSE;
 
-	public function members()
-	{
-		return $this->hasMany('Members', 'community_id');
-	}
 }

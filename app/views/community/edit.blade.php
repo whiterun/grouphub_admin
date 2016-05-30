@@ -19,9 +19,9 @@
 					</div>
 				</div>
 				<div class="form-group">
-					{{ Form::label('commuity_category_id', 'Commuity_category_id', array('class' => 'col-sm-2 control-group')) }}
+					{{ Form::label('community_category_id', 'Community_category_id', array('class' => 'col-sm-2 control-group')) }}
 					<div class="col-sm-10">
-						{{ Form::text('commuity_category_id', $show['commuity_category_id'], array('class' => 'form-control')) }}
+						{{ Form::text('community_category_id', $show['community_category_id'], array('class' => 'form-control')) }}
 					</div>
 				</div>
 				<div class="form-group">

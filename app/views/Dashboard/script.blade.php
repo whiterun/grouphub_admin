@@ -2,6 +2,7 @@
 <script type="text/javascript" src="{{ asset('assets/js/jquery/jquery-2.1.4.min.js') }}"></script>
 <script type="text/javascript">
 	$(function () {
+    
     /* ChartJS
      * -------
      * Here we will create a few charts using ChartJS
@@ -195,5 +196,5 @@
     };
     barChartOptions.datasetFill = false;
     barChart.Bar(barChartData, barChartOptions);
-  });
+ });
 </script>

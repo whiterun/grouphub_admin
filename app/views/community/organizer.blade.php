@@ -1,11 +1,10 @@
 @extends('layout')
 @section('content')
-
 <div class="box box-info">
 	<div class="box-header with-border">
 		<h4 class="box-title">
 			<i class="fa fa-user-plus"></i>
-			Member {{ $community->name }}
+			Organizer {{ $community->name }}
 		</h4>
 		<div class="box-tools pull-right">
 			<div class="box-tools pull-right">
@@ -21,24 +20,30 @@
 					<th>User Id</th>
 					<th>Users</th>
 					<th>Email</th>
-					<th>Status</th>
-					<th>Action</th>
+					<th>Organizer</th>
+					<th>Set Organizer</th>
 				</tr>
 			</thead>
 			<tbody>
-				@foreach( $members as $member )
+				@foreach( $organizer as $db )
 				<tr>
-					<td>{{ $member['user']['id'] }}</td>
-					<td>{{ $member['user']['name'] }}</td>
-					<td>{{ $member['user']['email'] }}</td>
-					@if( $member['role'] == 3 )
-					<td style="width:150px;">Approved Member</td>
+					<td>{{ $db['user']['id'] }}</td>
+					<td>{{ $db['user']['name'] }}</td>
+					<td>{{ $db['user']['email'] }}</td>
+					@if( $db['role'] == 3 )
+					<td style="width:150px;">Member</td>
+					@elseif( $db['role'] == 2)
+					<td style="width:150px;">Approved Organizer</td>
+					@elseif( $db['role'] == 1 )
+					<td style="width:150px;">Creator</td>
 					@endif
 					<td>
-						@if( $member['is_approved'] == 0 )
-						<a class="btn btn-success approve" data-id="{{ $member->id }}"><i class="fa fa-user-plus"></i> Approve</a>
-						@elseif( $member['is_approved'] == 1 )
-						<a class="btn btn-danger remove" data-id="{{ $member->id }}"><i class="fa fa-close"></i> Remove</a>
+						@if( $db['role'] == 3 )
+						<a data-id="{{ $db->id }}" class="btn btn-success set"><i class="fa fa-user-plus"></i> Set Organizer</a>
+						@elseif( $db['role'] == 2)
+						<a data-id="{{ $db->id }}" class="btn btn-danger remove"><i class="fa fa-close"></i> Remove</a>
+						@elseif( $db['role'] == 1 )
+						<span class="label label-primary"><i class="fa fa-ban"></i> Not yet approved</span>
 						@endif
 					</td>
 				</tr>
@@ -55,18 +60,18 @@
 @parent
 <script type="text/javascript">
 $(function(){
-	$(".approve").click(function(event) {
+	$(".remove").click(function(event) {
 		event.preventDefault();
-		$.post('/community/approve_member',{id:$(this).attr('data-id')},function(html){
-			alert('Approve Member Success');
+		$.post('/community/removeOrganizer',{id:$(this).attr('data-id')},function(html){
+			alert('Remove Organizer Success');
 			window.location.reload();
 		});     
 	});
 
-	$(".remove").click(function(event) {
+	$(".set").click(function(event) {
 		event.preventDefault();
-		$.post('/community/remove_member',{id:$(this).attr('data-id')},function(html){
-			alert('Remove Member Success');
+		$.post('/community/setOrganizer',{id:$(this).attr('data-id')},function(html){
+			alert('Set Organizer Success');
 			window.location.reload();
 		});     
 	});

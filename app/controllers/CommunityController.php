@@ -21,7 +21,7 @@ class CommunityController extends BaseController
 		}
 		$data = array(
 			"kolom" => ['id', 'name', 'contact_person', 'status'],
-			// "kolom" => ['id', 'name', 'contact_person', 'phone', 'status'],
+			//"kolom" => ['id', 'name', 'contact_person', 'phone', 'status'],
 			"tabel" => $show
 		);
 		return View::make('community.index', compact ( 'data' ));
@@ -42,7 +42,7 @@ class CommunityController extends BaseController
 		$id = Input::get('id');
 		$community = new community;
 		if(!isset($id)):
-			// insertnya belum 
+			// insert menyusul
 		else:
 			$update = $this->community->find($id);
 			$update->name_uri = Input::get('name_uri');
@@ -98,27 +98,80 @@ class CommunityController extends BaseController
 
 	public function Member($id)
 	{
-		return $member = Members::where('community_id')->get();
-		//$member = 
+		$member = Members::with('user')->where('community_id', $id)->where('role', 3)->get();
+		$community = $this->community->find($id);
+		$data = [ 
+			'members' => $member,
+			'community' => $community,
+		];
+		return View::make('community.member', $data);
 	}
 
-	public function approveMember($id)
+	public function approveMember()
 	{
-		$approve = Members::where(['is_approve', 1])->get();
+			$id = Input::get('id');
+			$approve = Members::find($id);
+			$approve->is_approved = 1;
+			$approve->save();
 
-		if ($approve['status'] == 'success') {
-			return Redirect::back()->with('flash_notice', 'Success to Approve member');
-		}
-		return Redirect::back()->with('flash_notice', 'Failed to Approve member');
+			return Redirect::back();
 	}
 
-	public function removeMember($id)
+	public function removeMember()
 	{
+		$id = Input::get('id');
 		$remove = Members::where('role', 3)->where('id', $id)->delete();
 
-		if ($remove['status'] == 'success') {
-			return Redirect::back()->with('flash_notice', 'Delete success');
-		}
-		return Redirect::back()->with('flash_notice', 'Delete failed');
+		return Redirect::back();
+	}
+	
+	public function organizer($id)
+	{
+		$community = $this->community->find($id);
+		$organizer = Members::with('user')->where('community_id', $id)->get();
+		$data = [
+			'organizer' => $organizer,
+			'community' => $community,
+		];
+		return View::make('community.organizer', $data);
+	}
+
+	public function setOrganizer()
+	{
+		$id = Input::get('id');
+		$set = Members::find($id);
+		$set->role = 2;
+		$set->save();
+
+		return Redirect::back();
+	}
+
+	public function removeOrganizer()
+	{
+		$id = Input::get('id');
+		$removeOrg = Members::where('role', 2)->where('id', $id)->update(['role', 3]);
+
+		return Redirect::back();
+	}
+
+	public function creator($id)
+	{
+		$creator = Members::with('user')->where('community_id', $id)->whereBetween('role', array(1,2))->get();
+		$community = $this->community->find($id);
+		$data = [ 
+			'creator' => $creator,
+			'community' => $community,
+		];
+		return View::make('community.creator', $data);
+	}
+
+	public function transferCreator()
+	{
+		$id = Input::get('id');
+		$setCreator = Members::find($id);
+		$setCreator->role = 1;
+		$setCreator->save();
+
+		return Redirect::back();
 	}
 }
