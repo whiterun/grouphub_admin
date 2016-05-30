@@ -60,11 +60,11 @@
 					</tr>
 					<tr>
 						<td>Facebook</td>
-						<td><a href="{{ $data['facebook'] }}">{{ $data['facebook'] }}</a></td>
+						<td><a href="facebook.com/{{ $data['facebook'] }}">{{ $data['facebook'] }}</a></td>
 					</tr>
 					<tr>
 						<td>Twitter</td>
-						<td><a href="{{ $data['twitter'] }}">{{ $data['twitter'] }}</a></td>
+						<td><a href="twitter.com/{{ $data['twitter'] }}">{{ $data['twitter'] }}</a></td>
 					</tr>
 					<tr>
 						<td>Address</td>

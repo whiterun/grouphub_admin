@@ -51,7 +51,7 @@
   		</thead>
   		<tbody>
 			@foreach($data['tabel'] as $table)
-				<tr>
+			<tr>
 				@foreach($data['kolom'] as $db)
 				@if ($db == 'created_at' || $db == 'updated_at')
 				<td style="width:20px;">{{ $table->$db->format('M jS, Y') }}</td>
