@@ -64,12 +64,8 @@ class CommunityController extends BaseController
 
 	public function detail($id)
 	{
-		$show = $this->community->find($id);
-		$data = array(
-			"kolom" => Schema::getColumnListing('community'),
-			"tabel" => $show
-		);
-		return View::make('community.detail', compact('data'));
+		$show['data'] = $this->community->find($id);
+		return View::make('community.detail', $show);
 	}
 
 	public function edit($id)

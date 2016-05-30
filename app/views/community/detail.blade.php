@@ -18,24 +18,55 @@
 					</tr>
 				</thead>
 				<tbody>
-					@foreach($data['kolom'] as $db)
-						@if($db == 'time_created' || $db == 'time_updated' )
-						<tr>
-							<td>{{ $db }}</td>
-							<td>{{ date('d M Y H:i',$data['tabel']->$db) }}</td>
-						</tr>
-						@else
-						<tr>
-							<td>{{ $db }}</td>
-							<td> {{ $data['tabel']->$db }}</td>
-						</tr>
-						@endif
-						@endforeach
+					<tr>
+						<td>id</td>
+						<td>{{ $data['id'] }}</td>
+					</tr>
+					<tr>
+						<td>name</td>
+						<td>{{ $data['name'] }}</td>
+					</tr>
+					<tr>
+						<td>Community Category</td>
+						<td>{{ $data['community_category_id'] }}</td>
+					</tr>
+					<tr>
+						<td>Description</td>
+						<td>{{ $data['description'] }}</td>
+					</tr>
+					<tr>
+						<td>Benefit of joining</td>
+						<td>{{ $data['benefit_of_joining'] }}</td>
+					</tr>
+					<tr>
+						<td>Looking For</td>
+						<td>{{ $data['looking_fir'] }}</td>
+					</tr>
+					<tr>
+						<td>Call for members</td>
+						<td>{{ $data['call_for_memebers'] }}</td>
+					</tr>
+					<tr>
+						<td>Contact Person</td>
+						<td>{{ $data['contact_person'] }}</td>
+					</tr>
+					<tr>
+						<td>email</td>
+						<td>{{ $data['email'] }}</td>
+					</tr>
+					<tr>
+						<td>Website</td>
+						<td>{{ $data['website'] }}</td>
+					</tr>
+					<tr>
+						<td>Address</td>
+						<td>{{ $data['address'] }}</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
 		<div class="box-footer">
-			{{ HTML::linkRoute('index_community', 'Back', array(), array('class' => 'btn btn-default')) }}
+			<a href="{{ route('index_community') }}" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Back</a>
 		</div>
 	</div>
 </div>

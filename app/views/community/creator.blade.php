@@ -49,7 +49,7 @@
 		</table>
 	</div>
 	<div class="box-footer">
-		<a href="{{ route('index_community') }}" class="btn btn-default"><i class="fa fa-reply"></i> back</a>
+		<a href="{{ route('index_community') }}" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> back</a>
 	</div>
 </div>
 @endsection
