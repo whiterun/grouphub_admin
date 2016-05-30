@@ -149,7 +149,7 @@ class CommunityController extends BaseController
 	public function removeOrganizer()
 	{
 		$id = Input::get('id');
-		$removeOrg = Members::where('role', 2)->where('id', $id)->update(['role', 3]);
+		$removeOrg = Members::where('role', 2)->where('id', $id)->update(['role' => '3']);
 
 		return Redirect::back();
 	}
