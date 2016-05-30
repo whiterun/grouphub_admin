@@ -56,7 +56,15 @@
 					</tr>
 					<tr>
 						<td>Website</td>
-						<td>{{ $data['website'] }}</td>
+						<td><a href="{{ $data['website'] }}">{{ $data['website'] }}</a></td>
+					</tr>
+					<tr>
+						<td>Facebook</td>
+						<td><a href="{{ $data['facebook'] }}">{{ $data['facebook'] }}</a></td>
+					</tr>
+					<tr>
+						<td>Twitter</td>
+						<td><a href="{{ $data['twitter'] }}">{{ $data['twitter'] }}</a></td>
 					</tr>
 					<tr>
 						<td>Address</td>
