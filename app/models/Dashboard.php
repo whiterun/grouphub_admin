@@ -6,10 +6,13 @@ class Dashboard extends \Eloquent {
 
 	public $timestamps = FALSE;
 
-	public function graphfirst()
+	public function graphUser()
 	{
-		if (Input::get('Start_date') && Input::get('End_date')) {
-			# code...
-		}
+		return $this->belongsTo('User');
+	}
+
+	public function graphCommunity()
+	{
+		return $this->belongsTo('Community');
 	}
 }

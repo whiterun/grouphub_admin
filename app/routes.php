@@ -66,14 +66,8 @@ Route::group([ 'prefix' => 'community' ], function(){
 	Route::get('/member/{id}', [ 'as' => 'member_community', 'uses' => 'CommunityController@Member' ]);
 	Route::post('/approve_member', [ 'as' => 'admin.community.approveMember', 'uses' => 'CommunityController@approveMember' ]);
 	Route::post('/remove_member', [ 'as' => 'admin.community.removeMember', 'uses' => 'CommunityController@removeMember' ]);
-	
-	// Organizer
-	Route::get('/organizer/{id}', [ 'as' => 'admin.orginizer.community','uses' => 'CommunityController@organizer' ]);
 	Route::post('/setOrganizer', [ 'as' => 'admin.set.organizer', 'uses' => 'CommunityController@setOrganizer' ]);
 	Route::post('/removeOrganizer', [ 'as' => 'admin.remove.organizer', 'uses' => 'CommunityController@removeOrganizer' ]);
-	
-	//creator
-	Route::get('/creator/{id}', [ 'as' => 'admin.creator.community', 'uses' => 'CommunityController@creator' ] );
 	Route::post('/transfer_creator', [ 'as' => 'admin.transfer.creator', 'uses' => 'CommunityController@transferCreator' ]);
 });
 
@@ -84,6 +78,7 @@ Route::group([ 'prefix' => 'event' ], function(){
 	Route::post('/store', [ 'as' => 'store_event', 'uses' => 'EventController@store' ]);
 	Route::get('/edit/{id}', [ 'as' => 'edit_event', 'uses' => 'EventController@edit' ]);
 	Route::get('/destroy/{id}', [ 'as' => 'destroy_event', 'uses' => 'EventController@destroy' ]);
+	Route::get('/detail/{id}', [ 'as' => 'detail_event', 'uses' => 'EventController@detail' ]);
 });
 
 // dashboard

@@ -16,9 +16,4 @@ class DashboardController extends \BaseController
 		$show['event'] = Events::where('status', '=', 1)->count();
 		return View::make('Dashboard.index', $show);
 	}
-
-	public function FunctionName($value='')
-	{
-		# code...
-	}
 }

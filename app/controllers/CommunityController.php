@@ -94,7 +94,7 @@ class CommunityController extends BaseController
 
 	public function Member($id)
 	{
-		$member = Members::with('user')->where('community_id', $id)->where('role', 3)->get();
+		$member = Members::with('user')->where('community_id', $id)->get();
 		$community = $this->community->find($id);
 		$data = [ 
 			'members' => $member,
@@ -120,17 +120,6 @@ class CommunityController extends BaseController
 
 		return Redirect::back();
 	}
-	
-	public function organizer($id)
-	{
-		$community = $this->community->find($id);
-		$organizer = Members::with('user')->where('community_id', $id)->get();
-		$data = [
-			'organizer' => $organizer,
-			'community' => $community,
-		];
-		return View::make('community.organizer', $data);
-	}
 
 	public function setOrganizer()
 	{
@@ -148,17 +137,6 @@ class CommunityController extends BaseController
 		$removeOrg = Members::where('role', 2)->where('id', $id)->update(['role' => '3']);
 
 		return Redirect::back();
-	}
-
-	public function creator($id)
-	{
-		$creator = Members::with('user')->where('community_id', $id)->whereBetween('role', array(1,2))->get();
-		$community = $this->community->find($id);
-		$data = [ 
-			'creator' => $creator,
-			'community' => $community,
-		];
-		return View::make('community.creator', $data);
 	}
 
 	public function transferCreator()

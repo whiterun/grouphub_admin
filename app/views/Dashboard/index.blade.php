@@ -79,7 +79,7 @@
 							<strong>Statistic</strong>
 						</p>
 						<div class="chart">
-							<canvas id="areaChart" style="height: 200px; width: 542px;" width="542" height="139"></canvas>
+							<canvas id="areaChart" style="height: 200px; width: 542px;" width="400" height="400"></canvas>
 						</div>
 					</div>
 					<div class="col-md-4">

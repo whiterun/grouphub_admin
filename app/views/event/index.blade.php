@@ -53,7 +53,7 @@
 						</button>
 						<ul class="dropdown-menu">
 							<li>
-								<a href="#"><i class="fa fa-search-plus"></i> Preview</a>
+								<a href="event/detail/{{ $table->id }}"><i class="fa fa-search-plus"></i> Preview</a>
 							</li>
 						    <li>
 						    	<a href="#"><i class="fa fa-users"></i> Manage Guest</a>

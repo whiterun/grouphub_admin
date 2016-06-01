@@ -1,17 +1,8 @@
 <script type="text/javascript" src="{{ asset('assets/js/chartjs/chart.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/jquery/jquery-2.1.4.min.js') }}"></script>
 <script type="text/javascript">
-	$(function () {
-    
-    /* ChartJS
-     * -------
-     * Here we will create a few charts using ChartJS
-     */
-    //--------------
-    //- AREA CHART -
-    //--------------
-    // Get context with jQuery - using jQuery's .get() method.
-    var areaChartCanvas = $("#areaChart").get(0).getContext("2d");
+$(function(){
+  var areaChartCanvas = $("#areaChart").get(0).getContext("2d");
     // This will get the first returned node in the jQuery collection.
     var areaChart = new Chart(areaChartCanvas);
     var areaChartData = {
@@ -196,5 +187,5 @@
     };
     barChartOptions.datasetFill = false;
     barChart.Bar(barChartData, barChartOptions);
- });
+});
 </script>
