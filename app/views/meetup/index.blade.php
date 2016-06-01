@@ -53,4 +53,7 @@
 		</table>
 	</div>
 </div>
+<ul class="pager">
+	{{ $data['tabel']->appends(array('search' => Input::get('search')))->links() }}
+</ul>
 @endsection
