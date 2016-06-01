@@ -85,3 +85,9 @@ Route::group([ 'prefix' => 'event' ], function(){
 Route::group([ 'prefix' => 'dashboard' ], function(){
 	Route::get('/', [ 'as' => 'index_dashboard', 'uses' => 'DashboardController@index' ]);
 });
+
+// meetup
+Route::group([ 'prefix' => 'meetup' ], function() {
+	Route::get('/', [ 'as' => 'index_meetup', 'uses' => 'MeetupController@index' ]);
+	Route::get('/detail/{id}', [ 'as' => 'detial_meetup', 'uses' => 'MeetupController@detail' ]);
+});

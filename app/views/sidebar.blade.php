@@ -50,7 +50,7 @@
 				</a>
 			</li>
 			<li class="treeview">
-				<a href="#">
+				<a href="{{ route('index_meetup') }}">
 					<i class="fa fa-user-secret"></i> <span>Meetup</span>
 				</a>
 			</li>

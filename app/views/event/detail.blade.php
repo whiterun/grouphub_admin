@@ -52,12 +52,12 @@
 				@if( $show['status'] == 1 )
 				<tr>
 					<td>Event status</td>
-					<td>{{ $show['status'] }}</td>
+					<td>Active</td>
 				</tr>
 				@elseif( $show['status'] == 2 )
 				<tr>
 					<td>Event status</td>
-					<td>{{ $show['status'] }}</td>
+					<td>Deleted</td>
 				</tr>
 				@endif
 			</tbody>
