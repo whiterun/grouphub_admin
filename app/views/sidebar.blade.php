@@ -55,7 +55,7 @@
 				</a>
 			</li>
 			<li class="treeview">
-				<a href="#">
+				<a href="{{ route('index_channel') }}">
 					<i class="fa fa-share-alt"></i> <span>Channel</span>
 				</a>
 			</li>

@@ -4,15 +4,15 @@
 <div class="alert alert-{{ count($data['tabel']) > 0 ? 'success' : 'danger' }}" {{ Input::get('search') ? '' : 'style="display:none;"' }} >
 	<button type="button" class="close"  data-dismiss="alert">×</button>
 		@if(count($data['tabel']))
-		<h4> Ditemukan {{ count($data['tabel']) }} data</h4>
+		<h4><i class="fa fa-check"></i> {{ count($data['tabel']) }} meetup founded</h4>
 		@else
-		<h4> Data yang anda cari tidak ditemukan </h4>
+		<h4><i class="fa fa-ban"></i> meetup not found</h4>
 		@endif
 </div>
 <div class="box box-success">
 	<div class="box-header with-border">
 		<h3 class="box-title">
-			<i></i>
+			<i class="fa fa-calendar-o"></i>
 			Meetup
 		</h3>
 		<div class="box-tools pull-right">

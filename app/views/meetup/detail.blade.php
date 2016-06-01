@@ -4,7 +4,7 @@
 <div class="box box-success">
 	<div class="box-header">
 		<h3 class="box-title">
-			<i></i>
+			<i class="fa fa-calendar-o"></i>
 			detail {{ $data['title'] }}
 		</h3>
 	</div>

@@ -91,3 +91,9 @@ Route::group([ 'prefix' => 'meetup' ], function() {
 	Route::get('/', [ 'as' => 'index_meetup', 'uses' => 'MeetupController@index' ]);
 	Route::get('/detail/{id}', [ 'as' => 'detial_meetup', 'uses' => 'MeetupController@detail' ]);
 });
+
+// Channel
+Route::group([ 'prefix' => 'channel' ], function() {
+	Route::get('/', [ 'as' => 'index_channel', 'uses' => 'ChannelController@index' ]);
+	Route::get('/detail/{id}', [ 'as' => 'detail_channel', 'uses' => 'ChannelController@detail' ]);
+});
