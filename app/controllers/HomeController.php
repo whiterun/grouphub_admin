@@ -35,7 +35,7 @@ class HomeController extends BaseController {
 		
 		if ( $auth )
 		{
-			return Redirect::to('/');
+			return Redirect::to('/dashboard');
 		}
 		else
 		{
@@ -44,6 +44,12 @@ class HomeController extends BaseController {
 				->withInput( Input::except('password') )
 				->with('flash_notice', 'Your username / password combination was incorrect.');
 		}
+	}
+
+	public function doLogout()
+	{
+		Auth::logout();
+		return Redirect::to('login');
 	}
 
 }
