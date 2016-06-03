@@ -24,11 +24,11 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-$env = $app->detectEnvironment(array(
+$env = $app->detectEnvironment([
 
-	'local' => [ 'WHITERUN', 'DESKTOP-HKP73LN'],
+	'local' => [ 'WHITERUN', 'Human', 'DESKTOP-HKP73LN'],
 
-));
+]);
 
 /*
 |--------------------------------------------------------------------------
