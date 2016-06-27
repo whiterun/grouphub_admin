@@ -12,6 +12,7 @@
 				<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 			</div>
 		</div>
+		{{--
 		<!-- search form -->
 		<form action="#" method="get" class="sidebar-form">
 			<div class="input-group">
@@ -22,6 +23,7 @@
 			</div>
 		</form>
 		<!-- /.search form -->
+		--}}
 		<!-- sidebar menu: : style can be found in sidebar.less -->
 		<ul class="sidebar-menu">
 			<li class="treeview">
@@ -35,11 +37,6 @@
 				</a>
 			</li>
 			<li class="treeview">
-				<a href="#">
-					<i class="fa fa-gift"></i> <span>Kadomerdeka</span>
-				</a>
-			</li>
-			<li class="treeview">
 				<a href="{{ route('index_community') }}">
 					<i class="fa fa-group"></i> <span>Community</span>
 				</a>
@@ -47,11 +44,6 @@
 			<li class="treeview">
 				<a href="{{ route('index_event') }}">
 					<i class="fa fa-calendar"></i> <span>Event</span>
-				</a>
-			</li>
-			<li class="treeview">
-				<a href="{{ route('index_meetup') }}">
-					<i class="fa fa-user-secret"></i> <span>Meetup</span>
 				</a>
 			</li>
 			<li class="treeview">
@@ -65,20 +57,15 @@
 				</a>
 			</li>
 			<li class="treeview">
-         	 	<a href="#">
-            	<span>Newsletter</span> <i class="fa fa-angle-left pull-right"></i>
-          		</a>
-	          	<ul class="treeview-menu">
-	            	<li><a href="#">Newsleter Type</a></li>
-	            	<li><a href="#">Newsleter Reminder</a></li>
-	          	</ul>
-        	</li>
-    </ul><!-- /.sidebar-menu -->
-
-  </div><!-- /.sidebar -->
-</div><!-- /.main-sidebar -->
-Control Sidebar
-		</ul>
+				<a href="#">
+					<span>Newsletter</span> <i class="fa fa-angle-left pull-right"></i>
+				</a>
+				<ul class="treeview-menu">
+					<li><a href="#">Newsleter Type</a></li>
+					<li><a href="#">Newsleter Reminder</a></li>
+				</ul>
+			</li>
+		</ul><!-- /.sidebar-menu -->
 	</section>
 	<!-- /.sidebar -->
 </aside>
