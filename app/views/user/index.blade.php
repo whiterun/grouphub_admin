@@ -37,7 +37,7 @@
 			</h3>
 			<div class="box-tools pull-right">
 				<div class="has-feedback">
-					<form style="float:right;" action="{{ route('index_user') }}" method="get">
+					<form style="float:right;" action="{{ route('user.index') }}" method="get">
 						<input type="text" name="search" class="form-control input-sm"  placeholder="Search User" value="{{ Input::get('search')}}" />
 						<span class="glyphicon glyphicon-search form-control-feedback"></span>
 					</form>
@@ -68,8 +68,16 @@
 									<span class="sr-only">Toggle Dropdown</span>
 								</button>
 								<ul class="dropdown-menu pull-right">
-									<li><a href="user/edit/{{ $user->id }}"><i class="fa fa-pencil"></i> Manage profile</a></li>
-									<li><a href="user/destroy/{{ $user->id }}"><i class="fa fa-trash"></i> Delete</a></li>
+									<li>
+										<a href="{{ route('user.edit', $user->id) }}">
+											<i class="fa fa-pencil"></i> Manage profile
+										</a>
+									</li>
+									<li>
+										<a href="{{ route('user.destroy', $user->id) }}">
+											<i class="fa fa-trash"></i> Delete
+										</a>
+									</li>
 								</ul>
 							</div>
 						</td>

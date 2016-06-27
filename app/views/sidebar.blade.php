@@ -32,12 +32,12 @@
 				</a>
 			</li>
 			<li class="treeview">
-				<a href="{{ route('index_user') }}">
+				<a href="{{ route('user.index') }}">
 					<i class="fa fa-user"></i> <span>User</span>
 				</a>
 			</li>
 			<li class="treeview">
-				<a href="{{ route('index_community') }}">
+				<a href="{{ route('community.index') }}">
 					<i class="fa fa-group"></i> <span>Community</span>
 				</a>
 			</li>

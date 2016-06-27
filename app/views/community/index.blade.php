@@ -68,32 +68,46 @@
 									<span class="caret"></span>
 									<span class="sr-only">Toggle Dropdown</span>
 								</button>
-								<ul class="dropdown-menu">
+								<ul class="dropdown-menu pull-right">
 									<li>
-									<a href="community/detail/{{ $community->id }}"><i class="fa fa-search-plus"></i> Preview</a>
+										<a href="{{ route('community.detail', $community->id) }}">
+											<i class="fa fa-search-plus"></i> Preview
+										</a>
 									</li>
 									<li>
-									<a href="community/member/{{ $community->id }}"><i class="fa fa-users"></i> Manage Member</a>
+										<a href="community/member/{{ $community->id }}">
+											<i class="fa fa-users"></i> Manage Member
+										</a>
 									</li>
 									<li>
-									<a href="community/organizer/{{ $community->id }}"><i class="fa fa-hand-o-right"></i> Set Organizer</a>
+										<a href="community/organizer/{{ $community->id }}">
+											<i class="fa fa-hand-o-right"></i> Set Organizer
+										</a>
 									</li>
 									<li>
-									<a href="community/creator/{{ $community->id }}"><i class="fa fa-paper-plane"></i> Transfer Creator</a>
+										<a href="community/creator/{{ $community->id }}">
+											<i class="fa fa-paper-plane"></i> Transfer Creator
+										</a>
 									</li>
-
 									@if( $community->status == 1 )
 									<li>
-									<a class="inactive" href="community/set-inactive/{{ $community->id }}"><i class="fa fa-lock"></i> Set Inactive</a>
+										<a class="inactive" href="community/set-inactive/{{ $community->id }}">
+											<i class="fa fa-lock"></i> Set Inactive
+										</a>
 									</li>
 									@endif
-
 									@if( $community->status == 2 )
 									<li>
-									<a class="activate" href="community/set-Activate/{{ $community->id }}"><i class="fa fa-unlock"></i> Set Activate</a>
+										<a class="activate" href="community/set-Activate/{{ $community->id }}">
+											<i class="fa fa-unlock"></i> Set Activate
+										</a>
 									</li>
 									@endif
-									<li><a href="community/edit/{{ $community->id }}"><i class="fa fa-pencil"></i> Edit</a></li>
+									<li>
+										<a href="{{ route('community.edit', $community->id) }}">
+											<i class="fa fa-pencil"></i> Edit
+										</a>
+									</li>
 								</ul>
 							</div>
 						</td>
