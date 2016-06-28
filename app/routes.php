@@ -35,15 +35,15 @@ Route::group([ 'before' => 'auth' ], function()
 
 });
 
-/*Route::group([ 'prefix' => 'kadomerdeka' ], function(){
-		Route::get('/', [ 'as' => 'index.kado', 'uses' => 'kadomerdekaController@index' ]);
-		Route::get('/create', [ 'as' => 'create_kado', 'uses' => 'kadomerdekaController@create' ]);
-		Route::get('/store', [ 'as' => 'store_kado', 'uses' => 'kadomerdekaController@store' ]);
-		Route::get('/edit/{id}', [ 'as' => 'edit_kado', 'uses' => 'kadomerdekaController@edit' ]);
-		Route::get('/destroy/{id}', [ 'as' => 'destroy_kado', 'uses' => 'kadomerdekaController@destroy' ]);
-});*/
+// dashboard
+Route::group([ 'prefix' => 'dashboard' ], function(){
+	Route::get('/', [
+		'as'	=> 'dashboard.index',
+		'uses'	=> 'DashboardController@index'
+	]);
+});
 
-// user
+// User
 Route::group([ 'prefix' => 'user' ], function()
 {	
 	Route::get('/', [
@@ -68,7 +68,7 @@ Route::group([ 'prefix' => 'user' ], function()
 	]);
 });
 
-// community
+// Community
 Route::group([ 'prefix' => 'community' ], function(){
 	Route::get('/', [
 		'as'	=> 'community.index',
@@ -104,7 +104,7 @@ Route::group([ 'prefix' => 'community' ], function(){
 	Route::post('/transfer_creator', [ 'as' => 'admin.transfer.creator', 'uses' => 'CommunityController@transferCreator' ]);
 });
 
-// event
+// Event
 Route::group([ 'prefix' => 'event' ], function(){
 	Route::get('/', [ 'as' => 'index_event', 'uses' => 'EventController@index' ]);
 	Route::get('/create', [ 'as' => 'create_event', 'uses' => 'EventController@create' ]);
@@ -114,19 +114,16 @@ Route::group([ 'prefix' => 'event' ], function(){
 	Route::get('/detail/{id}', [ 'as' => 'detail_event', 'uses' => 'EventController@detail' ]);
 });
 
-// dashboard
-Route::group([ 'prefix' => 'dashboard' ], function(){
-	Route::get('/', [ 'as' => 'index_dashboard', 'uses' => 'DashboardController@index' ]);
-});
-
-// meetup
-Route::group([ 'prefix' => 'meetup' ], function() {
-	Route::get('/', [ 'as' => 'index_meetup', 'uses' => 'MeetupController@index' ]);
-	Route::get('/detail/{id}', [ 'as' => 'detial_meetup', 'uses' => 'MeetupController@detail' ]);
-});
-
 // Channel
 Route::group([ 'prefix' => 'channel' ], function() {
 	Route::get('/', [ 'as' => 'index_channel', 'uses' => 'ChannelController@index' ]);
 	Route::get('/detail/{id}', [ 'as' => 'detail_channel', 'uses' => 'ChannelController@detail' ]);
+});
+
+// City
+Route::group([ 'prefix' => 'city' ], function() {
+	Route::get('/', [
+		'as'	=> 'city.index',
+		'uses'	=> 'CityController@index'
+	]);
 });
