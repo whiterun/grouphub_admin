@@ -12,8 +12,7 @@
 		<link href="{{ asset('assets/font-awesome-4.6.3/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
 		<!-- Theme style -->
 		<link href="{{ asset('assets/dist/css/AdminLTE.min.css') }}" rel="stylesheet" type="text/css" />
-		<!-- AdminLTE Skins. Choose a skin from the css/skins
-			 folder instead of downloading all of them to reduce the load. -->
+		<!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
 		<link href="{{ asset('assets/dist/css/skins/skin-blue.min.css') }}" rel="stylesheet" type="text/css" />
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

@@ -27,7 +27,7 @@
 		<!-- sidebar menu: : style can be found in sidebar.less -->
 		<ul class="sidebar-menu">
 			<li class="treeview">
-				<a href="{{ route('index_dashboard') }}">
+				<a href="{{ route('dashboard.index') }}">
 					<i class="fa fa-dashboard"></i> <span>Dashboard</span>
 				</a>
 			</li>
@@ -54,6 +54,11 @@
 			<li class="treeview">
 				<a href="#">
 					<i class="fa fa-credit-card"></i> <span>Transaction</span>
+				</a>
+			</li>
+			<li class="treeview">
+				<a href="{{ route('city.index') }}">
+					<i class="fa fa-flag"></i> <span>City</span>
 				</a>
 			</li>
 			<li class="treeview">

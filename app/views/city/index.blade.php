@@ -1,4 +1,4 @@
-<?php $i = $users->getFrom(); ?>
+<?php $i = $cities->getFrom(); ?>
 @extends('layout')
 
 @section('content')
@@ -9,36 +9,15 @@
 	</div>
 	@endif
 	
-	@if(!empty(Session::get('success')))
-		<div class="alert alert-success">
-			<button type="button" class="close fa fa-close"  data-dismiss="alert"></button>
-			<i class="fa fa-check"></i> {{ Session::get('success') }}
-		</div>
-	@endif
-
-	@if(!empty(Session::get('error')))
-		<div class="alert alert-success">
-			<button type="button" class="close fa fa-close"  data-dismiss="alert"></button>
-			<i class="fa fa-ban"></i> {{ Session::get('error') }}
-		</div>
-	@endif
-
-	@if(!empty(Session::get('delete_success')))
-		<div class="alert alert-success">
-			<button type="button" class="close fa fa-close"  data-dismiss="alert"></button>
-			<i class="fa fa-check"></i> {{ Session::get('delete_success') }}
-		</div>
-	@endif
-	
 	<div class="box box-info">
 		<div class="box-header with-border">
 			<h3 class="box-title">
-				<i class="fa fa-user"></i>&nbsp;User Account
+				<i class="fa fa-flag"></i>&nbsp;City List
 			</h3>
 			<div class="box-tools pull-right">
 				<div class="has-feedback">
-					<form style="float:right;" action="{{ route('user.index') }}" method="get">
-						<input type="text" name="search" class="form-control input-sm" placeholder="Search User" value="{{ Input::get('search')}}" />
+					<form style="float:right;" action="" method="get">
+						<input type="text" name="search" class="form-control input-sm" placeholder="Search City" value="{{ Input::get('search')}}" />
 						<span class="glyphicon glyphicon-search form-control-feedback"></span>
 					</form>
 				</div>
@@ -50,16 +29,16 @@
 					<tr>
 						<th>No.</th>
 						<th>Name</th>
-						<th>E-mail</th>
+						<th>Country</th>
 						<th style="width:auto;">Action</th>
 					</tr>
 				</thead>
 				<tbody>
-				@foreach( $users as $user )
+				@foreach( $cities as $city )
 					<tr>
 						<td>{{ $i }}</td>
-						<td>{{ $user->name }}</td>
-						<td>{{ $user->email }}</td>
+						<td>{{ $city->name }}</td>
+						<td>{{ $city->country->name }}</td>
 						<td>
 							<div class="btn-group">
 								<button type="button" class="btn btn-primary">Action</button>
@@ -69,12 +48,12 @@
 								</button>
 								<ul class="dropdown-menu pull-right">
 									<li>
-										<a href="{{ route('user.edit', $user->id) }}">
+										<a href="{{ route('user.edit', $city->id) }}">
 											<i class="fa fa-pencil"></i> Manage profile
 										</a>
 									</li>
 									<li>
-										<a href="{{ route('user.destroy', $user->id) }}">
+										<a href="{{ route('user.destroy', $city->id) }}">
 											<i class="fa fa-trash"></i> Delete
 										</a>
 									</li>
@@ -88,7 +67,7 @@
 			</table>
 		</div><!-- /.box-body -->
 		<div class="box-footer clearfix">
-			{{ $users->appends([ 'search' => Input::get('search') ])->links() }}
+			{{ $cities->appends([ 'search' => Input::get('search') ])->links() }}
 		</div>
 	</div><!-- /.box -->
 @endsection

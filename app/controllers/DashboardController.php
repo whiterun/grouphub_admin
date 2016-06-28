@@ -14,6 +14,6 @@ class DashboardController extends \BaseController
 		$show['user'] = User::where('status', '=', 1)->count();
 		$show['member'] = Members::where('is_approved', '=', 1)->count();
 		$show['event'] = Events::where('status', '=', 1)->count();
-		return View::make('Dashboard.index', $show);
+		return View::make('dashboard.index', $show);
 	}
 }

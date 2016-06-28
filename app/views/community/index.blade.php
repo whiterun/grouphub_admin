@@ -31,14 +31,14 @@
 			<div class="box-tools pull-right">
 				<div class="has-feedback">
 					<form style="float:right;" action="community" method="get">
-						<input type="text" name="search" class="form-control input-sm"  placeholder="Search Community" value="{{ Input::get('search')}}" />
+						<input type="text" name="search" class="form-control input-sm" placeholder="Search Community" value="{{ Input::get('search')}}" />
 						<span class="glyphicon glyphicon-search form-control-feedback"></span>
 					</form>
 				</div>
 			</div><!-- /.box-tools -->
 		</div><!-- /.box-header -->
 		<div class="box-body">
-			<table class="table table-hover table-nomargin table-bordered dataTable dataTable-nosort" data-nosort="0">
+			<table class="table table-bordered">
 				<thead>
 					<th>No.</th>
 					<th>Name</th>
