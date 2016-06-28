@@ -2,29 +2,34 @@
 
 class UserController extends \BaseController {
 
-	public function __construct(){
+	public function __construct()
+	{
 		$this->user = new User();
     }
-
+	
 	public function index()
 	{
-		$show = "";
-		if(Input::get('search')) {
-	        $show = $this->user->where('name', 'LIKE', '%'. Input::get('search') . '%')
-	                        ->orwhere('email', 'LIKE', '%'. Input::get('search') . '%')
-	                        ->orwhere('username', 'LIKE', '%'. Input::get('search') . '%')
-	                        ->orwhere('password', 'LIKE', '%'. Input::get('search') . '%')
-	                        ->paginate(20);
-	    } else {
-	       	$show = $this->user->paginate(20);
-	    }
-		$data = array(
-			//"kolom" => array('id','name','email','username','password'),
-			"kolom" => array('id','name','email'),
-			"tabel" => $show
-		);
+		Session::forget([ 'class', 'message' ]);
+		
+		if ( Input::has('search') )
+		{
+			$data['users'] = $this->user->where('name', 'LIKE', '%'. Input::get('search') . '%')
+				->orwhere('email', 'LIKE', '%'. Input::get('search') . '%')
+				->orwhere('username', 'LIKE', '%'. Input::get('search') . '%')
+				->orwhere('password', 'LIKE', '%'. Input::get('search') . '%')
+				->paginate(20);
+			
+			$count = count( $data['users'] );
+			
+			Session::flash('class', ( $count > 0 ? 'success' : 'danger' ) );
+			Session::flash('message', 'Found '.$count.' User(s) with &ldquo;'.Input::get('search').'&rdquo; keyword');
+		}
+		else
+		{
+			$data['users'] = $this->user->paginate(20);
+		}
 
-		return View::make ( 'user.index', compact ( 'data' ) );
+		return View::make ( 'user.index', $data );
 	}
 
 	public function create()

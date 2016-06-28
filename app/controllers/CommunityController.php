@@ -1,30 +1,36 @@
 <?php
 
-class CommunityController extends BaseController
+class CommunityController extends \BaseController
 {
-	function __construct()
+	public function __construct()
 	{
 		$this->community = new Community();
 	}
 
 	public function index()
 	{
-		$show = "";
-		if (Input::get('search')) {
-			$show = $this->community->where('name', 'LIKE', '%'. Input::get('search') . '%')
-	                        ->orwhere('call_for_members', 'LIKE', '%'. Input::get('search') . '%')
-	                        ->orwhere('contact_person', 'LIKE', '%'. Input::get('search') . '%')
-	                        ->orwhere('phone', 'LIKE', '%'. Input::get('search') . '%')
-	                        ->paginate(30);
-		}else{
-			$show = $this->community->paginate(30);
+		Session::forget([ 'class', 'message' ]);
+		
+		if ( Input::get('search') )
+		{
+			$data['communities'] = $this->community->where('name', 'LIKE', '%'. Input::get('search') . '%')
+				->orwhere('call_for_members', 'LIKE', '%'. Input::get('search') . '%')
+				->orwhere('contact_person', 'LIKE', '%'. Input::get('search') . '%')
+				->orwhere('phone', 'LIKE', '%'. Input::get('search') . '%')
+				->with('category')
+				->paginate(20);
+			
+			$count = count( $data['communities'] );
+			
+			Session::flash('class', ( $count > 0 ? 'success' : 'danger' ) );
+			Session::flash('message', 'Found '.$count.' Community(es) with &ldquo;'.Input::get('search').'&rdquo; keyword');
 		}
-		$data = array(
-			"kolom" => ['id', 'name', 'contact_person', 'status'],
-			//"kolom" => ['id', 'name', 'contact_person', 'phone', 'status'],
-			"tabel" => $show
-		);
-		return View::make('community.index', compact ( 'data' ));
+		else
+		{
+			$data['communities'] = $this->community->with('category')->paginate(20);
+		}
+		
+		return View::make( 'community.index', $data );
 	}
 	
 	public function create()

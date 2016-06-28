@@ -44,25 +44,58 @@ Route::group([ 'before' => 'auth' ], function()
 });*/
 
 // user
-Route::group([ 'prefix'=> 'user' ], function()
+Route::group([ 'prefix' => 'user' ], function()
 {	
-	Route::get('/', [ 'as' => 'index_user', 'uses' => 'UserController@index' ]);
-	Route::get('/create', [ 'as' => 'create_user', 'uses' => 'UserController@create' ]);
-	Route::post('/store', [ 'as' => 'store_user', 'uses' => 'UserController@store' ]);
-	Route::get('/edit/{id}', [ 'as' => 'edit_user', 'uses' => 'UserController@edit' ]);
-	Route::get('/destroy/{id}', [ 'as' => 'destroy_user', 'uses' => 'UserController@destroy' ]);
+	Route::get('/', [
+		'as'	=> 'user.index',
+		'uses'	=> 'UserController@index'
+	]);
+	Route::get('create', [
+		'as'	=> 'user.create',
+		'uses'	=> 'UserController@create'
+	]);
+	Route::post('store', [
+		'as'	=> 'user.store',
+		'uses'	=> 'UserController@store'
+	]);
+	Route::get('edit/{id}', [
+		'as'	=> 'user.edit',
+		'uses'	=> 'UserController@edit'
+	]);
+	Route::get('destroy/{id}', [
+		'as'	=> 'user.destroy',
+		'uses'	=> 'UserController@destroy'
+	]);
 });
 
 // community
 Route::group([ 'prefix' => 'community' ], function(){
-	Route::get('/', [ 'as' => 'index_community', 'uses' => 'CommunityController@index' ]);
-	Route::get('/create', [ 'as' => 'create_community', 'uses' => 'CommunityController@create' ]);
-	Route::post('/store', [ 'as' => 'store_community', 'uses' => 'CommunityController@store' ]);
-	Route::get('/edit/{id}', [ 'as' => 'edit_community', 'uses' => 'CommunityController@edit' ]);
-	Route::get('/destroy/{id}', [ 'as' => 'delete_community', 'uses' => 'CommunityController@destroy' ]);
-	 Route::post('/set-inactive/{id}', [ 'as' => 'community.set.inactive', 'uses' => 'CommunityController@setInactive' ]);
-	 Route::post('/set-Activate/{id}', [ 'as' => 'community.set.active', 'uses' => 'CommunityController@setActivate' ]);
-	Route::get('/detail/{id}', [ 'as' => 'detail_community','uses' => 'CommunityController@detail' ]);
+	Route::get('/', [
+		'as'	=> 'community.index',
+		'uses'	=> 'CommunityController@index'
+	]);
+	Route::get('create', [
+		'as'	=> 'community.create',
+		'uses'	=> 'CommunityController@create'
+	]);
+	Route::post('store', [
+		'as'	=> 'community.store',
+		'uses'	=> 'CommunityController@store'
+	]);
+	Route::get('edit/{id}', [
+		'as'	=> 'community.edit',
+		'uses'	=> 'CommunityController@edit'
+	]);
+	Route::get('destroy/{id}', [
+		'as'	=> 'community.delete',
+		'uses'	=> 'CommunityController@destroy'
+	]);
+	Route::get('detail/{id}', [
+		'as'	=> 'community.detail',
+		'uses'	=> 'CommunityController@detail'
+	]);
+	Route::post('/set-inactive/{id}', [ 'as' => 'community.set.inactive', 'uses' => 'CommunityController@setInactive' ]);
+	Route::post('/set-Activate/{id}', [ 'as' => 'community.set.active', 'uses' => 'CommunityController@setActivate' ]);
 	Route::get('/member/{id}', [ 'as' => 'member_community', 'uses' => 'CommunityController@Member' ]);
 	Route::post('/approve_member', [ 'as' => 'admin.community.approveMember', 'uses' => 'CommunityController@approveMember' ]);
 	Route::post('/remove_member', [ 'as' => 'admin.community.removeMember', 'uses' => 'CommunityController@removeMember' ]);
