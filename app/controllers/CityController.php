@@ -14,8 +14,6 @@ class CityController extends \BaseController {
 	 */
 	public function index()
 	{
-		Session::forget([ 'class', 'message' ]);
-		
 		if ( Input::get('search') )
 		{
 			$data['cities'] = $this->city->where('name', 'LIKE', '%'. Input::get('search') . '%')
@@ -24,8 +22,8 @@ class CityController extends \BaseController {
 			
 			$count = count( $data['cities'] );
 			
-			Session::flash('class', ( $count > 0 ? 'success' : 'danger' ) );
-			Session::flash('message', 'Found '.$count.' City(es) with &ldquo;'.Input::get('search').'&rdquo; keyword');
+			Session::flash( 'class', ( $count > 0 ? 'success' : 'danger' ) );
+			Session::flash( 'message', 'Found '.$count.' City(es) with &ldquo;'.Input::get('search').'&rdquo; keyword' );
 		}
 		else
 		{
@@ -43,7 +41,9 @@ class CityController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		$data['countries'] = Countries::where('status', 1)->get();
+		
+		return View::make( 'city.create', $data );
 	}
 
 
@@ -54,7 +54,26 @@ class CityController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$input = Input::get();
+		
+		$validation = Cities::validate( $input );
+		
+		if ( $validation->passes() )
+		{
+			Cities::create( $input );
+			
+			Session::flash( 'class', 'success' );
+			Session::flash( 'message', 'A new city has been added' );
+			
+			return Redirect::route('city.index');
+		}
+		else
+		{
+			Session::flash( 'class', 'danger' );
+			Session::flash( 'message', $validation->messages()->all() );
+			
+			return Redirect::back()->withInput();
+		}
 	}
 
 

@@ -16,7 +16,10 @@
 			</h3>
 			<div class="box-tools pull-right">
 				<div class="has-feedback">
-					<form style="float:right;" action="" method="get">
+					<a class="btn btn-default btn-sm pull-left" href="{{ route('city.create') }}" style="margin-right:5px;">
+						<i class="fa fa-plus"></i>&nbsp;Add New
+					</a>
+					<form action="" class="pull-left" method="get">
 						<input type="text" name="search" class="form-control input-sm" placeholder="Search City" value="{{ Input::get('search')}}" />
 						<span class="glyphicon glyphicon-search form-control-feedback"></span>
 					</form>
@@ -49,7 +52,7 @@
 								<ul class="dropdown-menu pull-right">
 									<li>
 										<a href="{{ route('user.edit', $city->id) }}">
-											<i class="fa fa-pencil"></i> Manage profile
+											<i class="fa fa-pencil"></i> Edit
 										</a>
 									</li>
 									<li>

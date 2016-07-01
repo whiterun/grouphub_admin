@@ -36,7 +36,8 @@ Route::group([ 'before' => 'auth' ], function()
 });
 
 // dashboard
-Route::group([ 'prefix' => 'dashboard' ], function(){
+Route::group([ 'prefix' => 'dashboard' ], function()
+{
 	Route::get('/', [
 		'as'	=> 'dashboard.index',
 		'uses'	=> 'DashboardController@index'
@@ -69,7 +70,8 @@ Route::group([ 'prefix' => 'user' ], function()
 });
 
 // Community
-Route::group([ 'prefix' => 'community' ], function(){
+Route::group([ 'prefix' => 'community' ], function()
+{
 	Route::get('/', [
 		'as'	=> 'community.index',
 		'uses'	=> 'CommunityController@index'
@@ -121,9 +123,18 @@ Route::group([ 'prefix' => 'channel' ], function() {
 });
 
 // City
-Route::group([ 'prefix' => 'city' ], function() {
+Route::group([ 'prefix' => 'city' ], function()
+{
 	Route::get('/', [
 		'as'	=> 'city.index',
 		'uses'	=> 'CityController@index'
+	]);
+	Route::get('create', [
+		'as'	=> 'city.create',
+		'uses'	=> 'CityController@create'
+	]);
+	Route::post('store', [
+		'as'	=> 'city.store',
+		'uses'	=> 'CityController@store'
 	]);
 });
