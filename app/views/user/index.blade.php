@@ -74,7 +74,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="{{ route('user.destroy', $user->id) }}">
+										<a href="{{ route('user.delete', $user->id) }}">
 											<i class="fa fa-trash"></i> Delete
 										</a>
 									</li>

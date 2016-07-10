@@ -59,12 +59,12 @@ Route::group([ 'prefix' => 'user' ], function()
 		'as'	=> 'user.store',
 		'uses'	=> 'UserController@store'
 	]);
-	Route::get('edit/{id}', [
+	Route::get('{id}/edit', [
 		'as'	=> 'user.edit',
 		'uses'	=> 'UserController@edit'
 	]);
-	Route::get('destroy/{id}', [
-		'as'	=> 'user.destroy',
+	Route::get('{id}/delete', [
+		'as'	=> 'user.delete',
 		'uses'	=> 'UserController@destroy'
 	]);
 });
@@ -84,15 +84,15 @@ Route::group([ 'prefix' => 'community' ], function()
 		'as'	=> 'community.store',
 		'uses'	=> 'CommunityController@store'
 	]);
-	Route::get('edit/{id}', [
+	Route::get('{id}/edit', [
 		'as'	=> 'community.edit',
 		'uses'	=> 'CommunityController@edit'
 	]);
-	Route::get('destroy/{id}', [
+	Route::get('{id}/delete', [
 		'as'	=> 'community.delete',
 		'uses'	=> 'CommunityController@destroy'
 	]);
-	Route::get('detail/{id}', [
+	Route::get('{id}/detail', [
 		'as'	=> 'community.detail',
 		'uses'	=> 'CommunityController@detail'
 	]);
@@ -136,5 +136,21 @@ Route::group([ 'prefix' => 'city' ], function()
 	Route::post('store', [
 		'as'	=> 'city.store',
 		'uses'	=> 'CityController@store'
+	]);
+	Route::get('{id}/edit', [
+		'as'	=> 'city.edit',
+		'uses'	=> 'CityController@edit'
+	]);
+	Route::put('{id}/update', [
+		'as'	=> 'city.update',
+		'uses'	=> 'CityController@update'
+	]);
+	Route::get('{id}/delete', [
+		'as'	=> 'city.delete',
+		'uses'	=> 'CityController@destroy'
+	]);
+	Route::get('{id}/set-active', [
+		'as'	=> 'city.set.active',
+		'uses'	=> 'CityController@setActive'
 	]);
 });
